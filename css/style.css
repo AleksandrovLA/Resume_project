@@ -285,3 +285,6 @@ body {
 .code {
   margin-top: 60px;
 }
+a:hover {
+  text-decoration: none;
+  }
