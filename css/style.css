@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 .body {
+  display: flex;
   background-color: #f5f7fa;
   padding-left: 20px;
   padding-top: 40px;
@@ -20,12 +21,12 @@
 }
 .sidebar {
   background-color: rgb(50,50,50);
-  width: 340px;
+  width: 310px;
   padding-top: 0px;
   padding-bottom: 30px;
 }
 .my-photo {
-  width: 340px;
+  width: 310px;
 }
 .about-me-conteiner {
   padding-left: 80px;
