@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>My resume</title>
   <link rel="stylesheet" href="./css/style.css" />
-  
+
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap&subset=cyrillic"
     rel="stylesheet" />
   <base target="_blank">
@@ -146,7 +146,7 @@
           <a class="FB_link" href="https://github.com/AleksandrovLA">AleksandrovLA</a>
         </div>
 
-       <!--<div>
+        <!--<div>
           <span class="FB">CV Código fuente en GitHub:</span>
           <a class="FB_link" href="https://github.com/AleksandrovLA/Resume_project">CV</a>
         </div> -->
@@ -294,11 +294,29 @@
       </div>
     </aside>
     <div class="about-me-conteiner">
-      <select class="select-css" id="language" onchange="langFunction()">
-        <option value="eng">English</option>
-        <option value="esp">Español</option>
-        <option value="ukr">Українська</option>
-      </select>
+
+
+      <div class="custom-select-wrapper">
+        <div class="custom-select">
+          <div class="custom-select-trigger">
+            <img id="selected-flag" src="img/gb-eng.svg" alt="Flag">
+            <span id="selected-language-text">En</span>
+          </div>
+          <div class="custom-options">
+            <span class="custom-option" data-value="en" data-flag="img/gb-eng.svg">
+              <img src="img/gb-eng.svg" alt="English Flag"> En
+            </span>
+            <span class="custom-option" data-value="es" data-flag="img/es.svg">
+              <img src="img/es.svg" alt="Spanish Flag"> Es
+            </span>
+            <span class="custom-option" data-value="ua" data-flag="img/ua.svg">
+              <img src="img/ua.svg" alt="Ukrainian Flag"> Укр
+            </span>
+
+          </div>
+        </div>
+      </div>
+
 
 
       <div id="eng2">
@@ -321,7 +339,7 @@
         <div class="professional-experience">
           <h3 class="professional-experience-title">Professional Experience</h3>
 
-          <p class="work-years">2021-2024</p> 
+          <p class="work-years">2021-2024</p>
           <h4 class="exp-title">SnoopGame QA | Senior QA Engineer | HiberWorld</h4>
           <h4 class="source-title">Responsibilities:</h4>
           <ul class="sources">
@@ -375,8 +393,8 @@
 
 
           <p class="work-years">2020-2021</p>
-          <h4 class="exp-title">SnoopGame QA | QA Engineer | Different projects</h4> 
-          
+          <h4 class="exp-title">SnoopGame QA | QA Engineer | Different projects</h4>
+
           <h4 class="source-title">Responsibilities:</h4>
           <ul class="sources">
             <li>
@@ -394,7 +412,7 @@
             </li>
           </ul>
 
-          
+
 
           <h4 class="source-title">Recommendations</h4>
           <a class="source_link" href="https://www.linkedin.com/in/oleksiiaaleksandrov/details/recommendations">Read on
@@ -524,8 +542,8 @@
               Documentación: listas de comprobación, casos de prueba, informes de errores
           </ul>
 
-          
-          
+
+
 
           <h4 class="source-title">Recomendaciones</h4>
           <a class="source_link" href="https://www.linkedin.com/in/oleksiiaaleksandrov/details/recommendations">Leer
@@ -655,7 +673,7 @@
             </li>
           </ul>
 
-          
+
 
           <h4 class="source-title">Рекомендації</h4>
           <a class="source_link"
@@ -694,26 +712,51 @@
     </div>
 
     <script>
-      function langFunction() {
-        if (language.value == "ukr") {
+
+
+      document.querySelector('.custom-select-trigger').addEventListener('click', function () {
+        document.querySelector('.custom-select').classList.toggle('open');
+      });
+
+      document.querySelectorAll('.custom-option').forEach(function (option) {
+        option.addEventListener('click', function () {
+          var flagSrc = this.getAttribute('data-flag');
+          var languageText = this.textContent.trim();
+          var languageValue = this.getAttribute('data-value');
+
+          document.getElementById('selected-flag').src = flagSrc;
+          document.getElementById('selected-language-text').textContent = languageText;
+
+          document.querySelector('.custom-select').classList.remove('open');
+
+          langFunction(languageValue);
+        });
+      });
+
+      window.addEventListener('click', function (e) {
+        const select = document.querySelector('.custom-select');
+        if (!select.contains(e.target)) {
+          select.classList.remove('open');
+        }
+      });
+
+
+      function langFunction(languageValue) {
+        if (languageValue === "ua") {
           document.getElementById("ukr1").style.display = "block";
           document.getElementById("ukr2").style.display = "block";
           document.getElementById("eng1").style.display = "none";
-          document.getElementById("eng2").style.display = "none"
+          document.getElementById("eng2").style.display = "none";
           document.getElementById("esp1").style.display = "none";
           document.getElementById("esp2").style.display = "none";
-
-        }
-        else if (language.value == "esp") {
+        } else if (languageValue === "es") {
           document.getElementById("esp1").style.display = "block";
           document.getElementById("esp2").style.display = "block";
           document.getElementById("ukr1").style.display = "none";
           document.getElementById("ukr2").style.display = "none";
           document.getElementById("eng1").style.display = "none";
           document.getElementById("eng2").style.display = "none";
-
-        }
-        else {
+        } else {
           document.getElementById("esp1").style.display = "none";
           document.getElementById("esp2").style.display = "none";
           document.getElementById("ukr1").style.display = "none";
@@ -721,8 +764,11 @@
           document.getElementById("eng1").style.display = "block";
           document.getElementById("eng2").style.display = "block";
         }
-
       }
+
+
+
+
     </script>
 
   </div>
