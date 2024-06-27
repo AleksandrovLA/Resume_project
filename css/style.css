@@ -206,7 +206,7 @@
 }
 
 .info-conteiner {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 .professional-experience-title {
@@ -215,6 +215,7 @@
   font-weight: 700;
   line-height: 24px;
   margin-bottom: 10px;
+  margin-top: 30px;
 
 
 }
@@ -290,7 +291,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 .education {
